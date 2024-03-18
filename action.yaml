@@ -1,0 +1,76 @@
+name: 'Annotate major and minor version tags extracted from semver'
+description: |
+  Annotate major and minor version tags with the corresponding semver version.
+
+author: tapih
+
+branding:
+  icon: anchor
+  color: black
+
+inputs:
+  tag:
+    description: 'The semver tag to annotate'
+    required: false
+
+outputs:
+  minor:
+    description: 'The minor version (e.g. v1.0)'
+    value: ${{ env.MINOR_TAG }}
+  major:
+    description: 'The major version (e.g. v1)'
+    value: ${{ env.MAJOR_TAG }}
+
+# This action is a rewrite of the original action in order to improve the
+# security and performance of the action just a little bit b6y removing the
+# dependency on Docker.
+#
+# Refer to the original repository at:
+#   https://github.com/haya14busa/action-update-semver/
+runs:
+  using: composite
+  steps:
+    - name: Get semver version from env if not provided
+      shell: bash
+      env:
+        INPUT: ${{ inputs.tag }}
+      run: |
+        if [ -n "${INPUT}" ]; then
+          echo "Using provided tag"
+          echo "TAG=${INPUT}" >> "${GITHUB_ENV}"
+          exit 0
+        fi
+
+        echo "No tag provided, using GITHUB_REF"
+        echo "TAG=${GITHUB_REF#refs/tags/}" >> "${GITHUB_ENV}"
+
+    - name: Validate tag
+      shell: bash
+      run: |
+        if [[ ! "${TAG}" =~ ^(v|)[0-9]+\.[0-9]+\.[0-9]+$ ]]
+        then
+          echo "Invalid tag: ${TAG}" 2>&1
+          exit 1
+        fi
+
+    - name: Create major and minor tags
+      shell: bash
+      run: |
+        {
+          echo "MINOR_TAG=${TAG%.*}"
+          echo "MAJOR_TAG=${TAG%.*.*}"
+        } >> "${GITHUB_ENV}"
+
+    - name: Configure git
+      shell: bash
+      run: |
+        git config --global user.name "${GITHUB_ACTOR}"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreplay.github.com"
+
+    - name: Annotate tag alias
+      shell: bash
+      run: |
+        git tag -f -a "${MAJOR_TAG}" -m "Release ${TAG}"
+        git tag -f -a "${MINOR_TAG}" -m "Release ${TAG}"
+        git push -f origin "${MAJOR_TAG}" "${MINOR_TAG}"
+
