@@ -8,8 +8,7 @@ jobs:
   tagpr:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    permissions:
-      contents: {}
+    permissions: {}
     steps:
       - uses: actions/create-github-app-token@v1
         id: token
