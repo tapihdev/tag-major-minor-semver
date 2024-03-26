@@ -1,4 +1,4 @@
-name: 'Annotate major and minor version tags extracted from semver'
+name: 'Tag major and minor versions extracted from semver'
 description: |
   Annotate major and minor version tags with the corresponding semver version.
 
