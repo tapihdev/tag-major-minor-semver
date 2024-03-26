@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.0.3](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.2...v1.0.3) - 2024-03-26
+- fix: update name to make it unique by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/15
+
 ## [v1.0.2](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.1...v1.0.2) - 2024-03-22
 - ci: use updated tagpr by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/8
 - fix: set app id and private key by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/9
