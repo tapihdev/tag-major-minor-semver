@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Annotate major and minor version
-        uses: tapih/tag-major-minor-semver@v1
+        uses: tapihdev/tag-major-minor-semver@v1
 ```
 
 ### Inputs
