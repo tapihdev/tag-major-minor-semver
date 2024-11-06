@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.0.4](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.3...v1.0.4) - 2024-10-10
+- doc: Update README.md by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/18
+
 ## [v1.0.3](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.2...v1.0.3) - 2024-03-26
 - fix: update name to make it unique by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/15
 
