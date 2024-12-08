@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.0.5](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.4...v1.0.5) - 2024-12-08
+- chore: use renovate-config repository by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/20
+
 ## [v1.0.4](https://github.com/tapihdev/tag-major-minor-semver/compare/v1.0.3...v1.0.4) - 2024-10-10
 - doc: Update README.md by @tapih in https://github.com/tapihdev/tag-major-minor-semver/pull/18
 
